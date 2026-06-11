@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_blog_question_answers",
+  "info": {
+    "displayName": "Question Answer"
+  },
+  "options": {},
+  "attributes": {
+    "question": {
+      "type": "string"
+    },
+    "answer": {
+      "type": "richtext"
+    }
+  },
+  "config": {}
+}
