@@ -1,3 +1,18 @@
+const getPreviewPathname = (uid, { locale, document }) => {
+  const { slug } = document;
+  switch (uid) {
+    case "api::blog.blog": {
+      if (!slug) {
+        return "/blog";
+      }
+      return `/blog/${slug}`;
+    }
+    default: {
+      return null;
+    }
+  }
+};
+
 module.exports = ({ env }) => ({
   auth: {
     secret: env('ADMIN_JWT_SECRET'),
@@ -16,5 +31,23 @@ module.exports = ({ env }) => ({
   flags: {
     nps: env.bool('FLAG_NPS', true),
     promoteEE: env.bool('FLAG_PROMOTE_EE', true),
+  },
+  preview: {
+    enabled: true,
+    config: {
+      allowedOrigins: env('CLIENT_URL'),
+      async handler(uid, { documentId, locale, status }) {
+        const document = await strapi.documents(uid).findOne({ documentId });
+        const pathname = getPreviewPathname(uid, { locale, document });
+        if (!pathname) {
+          return null;
+        }
+        const urlSearchParams = new URLSearchParams({
+          secret: env('PREVIEW_SECRET'),
+          status,
+        });
+        return `${env('CLIENT_URL')}${pathname}?${urlSearchParams}`;
+      },
+    },
   },
 });
