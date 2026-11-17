@@ -23,6 +23,7 @@
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
     "strapi-country-select": "^1.1.0",
+    "strapi-identity": "^0.7.5",
     "styled-components": "^6.0.0"
   },
   "engines": {

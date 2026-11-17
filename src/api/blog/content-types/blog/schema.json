@@ -79,6 +79,9 @@
         "blog.blog-content",
         "blog.faq"
       ]
+    },
+    "scheduled_at": {
+      "type": "datetime"
     }
   }
 }

@@ -5,6 +5,7 @@
 import strapiCloud from "@strapi/plugin-cloud/strapi-admin";
 import usersPermissions from "@strapi/plugin-users-permissions/strapi-admin";
 import strapiCountrySelect from "strapi-country-select/strapi-admin";
+import strapiIdentity from "strapi-identity/strapi-admin";
 import { renderAdmin } from "@strapi/strapi/admin";
 
 renderAdmin(document.getElementById("strapi"), {
@@ -12,5 +13,6 @@ renderAdmin(document.getElementById("strapi"), {
     "strapi-cloud": strapiCloud,
     "users-permissions": usersPermissions,
     "strapi-country-select": strapiCountrySelect,
+    "strapi-identity": strapiIdentity,
   },
 });
